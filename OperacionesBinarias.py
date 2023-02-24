@@ -142,6 +142,7 @@ class app():
 
 
     def decimal_a_hexadecimal(dec):
+        dec = 0
         hex = ""
         while dec > 0:
             residuo = dec % 16
