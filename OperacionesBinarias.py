@@ -1,16 +1,19 @@
 
 class app():
-    def __init__(self):
-        op = int(input("Selecciones la opción: \n (1) Binario a número \n (2) Hexadecimal a número \n (3) Salir \n ->"))
+    def __init__(self):    
+        print("Bienvenido al programa creado por Brandon Morales y Carlos Valladares.")
+        print("El programa realiza conversiones de binario y hexadecimal a números decimales y viceversa.")
+        print("Para proceder, por favor ingrese la opción que deseaa realizar:")
+        op = int(input("Selecciones la opción: \n (1) Binario a Decimal \n (2) Hexadecimal a Decimal \n (3) Decimal a Hexadecimal \n (4) Salir \n ->"))
 
-        while(op != 3):   
+        while(op != 4):   
 
             if(op == 1):
                 n = int(input("Ingrese un decinal de 7 bits rango(0-127): \n -> "))
                 print(n)
                 if(n>=-127 and n<=127):
                     rev = self.Numero_ABinario(n,n)
-                    print("------------------------- \n Número ingresado")
+                    print("------------------------- \n Decimal ingresado")
                     print(n)
                     print("Binario:")
                     print(rev)
@@ -22,10 +25,24 @@ class app():
                     print(rev2)
                 else:
                     print("No cumpe con 7 bits debe estar el rango de 0 y 127 par ser de 7 y el singo llega al 8vo bit")
+                    
 
-            elif(op == 2):
-                self.hexadecimal_Anumero()
-            op = int(input("Selecciones la opción: \n (1) Binario a número \n (2) Hexadecimal a número \n (3) Salir \n ->"))
+            if(op == 2):
+                hexadecimal = input('Ingresa el número hexadecimal a convertir para decimal : ')
+                dec = self.hexadecimal_Anumero(hexadecimal)
+                print(dec)
+
+            if(op == 3):
+                self.decimal_a_hexadecimal()    
+                dec = int(input("Escribe un número decimal, yo lo convertiré a hexadecimal: "))
+                hex = self.decimal_a_hexadecimal(dec)
+                print(f"El decimal {dec} es {hex} en hexadecimal")
+
+            elif():
+                print("El dato ingresado es inválido.")
+            op = int(input("Selecciones la opción: \n (1) Binario a Decimal \n (2) Hexadecimal a Decimal \n (3) Decimal a Hexadecimal \n (4) Salir \n ->"))
+
+            
 
 
     def Binario_AComplemento2(self,listaBinariaA1):
@@ -101,8 +118,38 @@ class app():
         return rev
 
 
-    def hexadecimal_Anumero(self):       
-        return ""
+    def hexadecimal_Anumero(hexadecimal):       
+        # Función que regresa el verdadero valor hexadecimal.
+        dec = int(hexadecimal, base=16)
+        print('Número comvertido a decimal :', dec)
+
+    # Por ejemplo, si recibe un 15 devuelve f, y si recibe un número menor a 10, devuelve el número sin modificarlo
+    def obtener_caracter_hexadecimal(valor):
+        # Lo necesitamos como cadena
+        valor = str(valor)
+        equivalencias = {
+            "10": "a",
+            "11": "b",
+            "12": "c",
+            "13": "d",
+            "14": "e",
+            "15": "f",
+        }
+        if valor in equivalencias:
+            return equivalencias[valor]
+        else:
+            return valor
+
+
+    def decimal_a_hexadecimal(dec):
+        hex = ""
+        while dec > 0:
+            residuo = dec % 16
+            verdadero_caracter = obtener_caracter_hexadecimal(residuo)
+            hex = verdadero_caracter + hex
+            dec = int(dec / 16)
+        return hex
+
 
 
     def suma(self,a,b):
