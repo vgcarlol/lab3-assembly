@@ -33,10 +33,9 @@ class app():
                 print(dec)
 
             if(op == 3):
-                self.decimal_a_hexadecimal()    
-                dec = int(input("Escribe un número decimal, yo lo convertiré a hexadecimal: "))
-                hex = self.decimal_a_hexadecimal(dec)
-                print(f"El decimal {dec} es {hex} en hexadecimal")
+                decimal = int(input("Escribe un número decimal, yo lo convertiré a hexadecimal: "))
+                hexadecimal = self.decimal_a_hexadecimal(decimal)
+                print(f"El decimal {decimal} es {hexadecimal} en hexadecimal")
 
             elif():
                 print("El dato ingresado es inválido.")
@@ -118,13 +117,13 @@ class app():
         return rev
 
 
-    def hexadecimal_Anumero(hexadecimal):       
+    def hexadecimal_Anumero(self,hexadecimal):       
         # Función que regresa el verdadero valor hexadecimal.
-        dec = int(hexadecimal, base=16)
-        print('Número comvertido a decimal :', dec)
+        decimal = int(hexadecimal, base=16)
+        print('Número comvertido a decimal :', decimal)
 
     # Por ejemplo, si recibe un 15 devuelve f, y si recibe un número menor a 10, devuelve el número sin modificarlo
-    def obtener_caracter_hexadecimal(valor):
+    def obtener_caracter_hexadecimal(self,valor):
         # Lo necesitamos como cadena
         valor = str(valor)
         equivalencias = {
@@ -141,15 +140,15 @@ class app():
             return valor
 
 
-    def decimal_a_hexadecimal(dec):
-        dec = 0
-        hex = ""
-        while dec > 0:
-            residuo = dec % 16
-            verdadero_caracter = obtener_caracter_hexadecimal(residuo)
-            hex = verdadero_caracter + hex
-            dec = int(dec / 16)
-        return hex
+    def decimal_a_hexadecimal(self,decimal):
+        decimal = 0
+        hexadecimal = ""
+        while decimal > 0:
+            residuo = decimal % 16
+            verdadero_caracter = self.obtener_caracter_hexadecimal(residuo)
+            hexadecimal = verdadero_caracter + hexadecimal
+            decimal = int(decimal / 16)
+        return hexadecimal
 
 
 
