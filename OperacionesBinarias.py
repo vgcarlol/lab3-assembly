@@ -1,10 +1,10 @@
 
 class app():
     def __init__(self):    
-        print("Bienvenido al programa creado por Brandon Morales y Carlos Valladares.")
+        print("Bienvenido al programa creado por Brandon Reyes Morales y Carlos Valladares.")
         print("El programa realiza conversiones de binario y hexadecimal a números decimales y viceversa.")
         print("Para proceder, por favor ingrese la opción que deseaa realizar:")
-        op = int(input("Selecciones la opción: \n (1) Binario a Decimal \n (2) Hexadecimal a Decimal \n (3) Decimal a Hexadecimal \n (4) Salir \n ->"))
+        op = int(input("Seleccione la opción: \n (1) Binario a Decimal \n (2) Hexadecimal a Decimal \n (3) Decimal a Hexadecimal \n (4) Salir \n -> "))
 
         while(op != 4):   
 
@@ -28,19 +28,21 @@ class app():
                     
 
             if(op == 2):
-                hexadecimal = input('Ingresa el número hexadecimal a convertir para decimal : ')
-                dec = self.hexadecimal_Anumero(hexadecimal)
-                print(dec)
+                print("")
+                hexadecimal = input("Escribe un número hexadecimal, yo lo convertiré a decimal (si incluye letras por favor colócalas en mayúsculas para funcionar correctamente): \n -> ")
+                decimal = self.hexadecimal_Anumero(hexadecimal)
 
             if(op == 3):
-                decimal = int(input("Escribe un número decimal, yo lo convertiré a hexadecimal: "))
+                print("")
+                decimal = int(input("Escribe un número decimal, yo lo convertiré a hexadecimal: \n -> "))
                 hexadecimal = self.decimal_a_hexadecimal(decimal)
                 print(f"El decimal {decimal} es {hexadecimal} en hexadecimal")
 
             elif():
                 print("El dato ingresado es inválido.")
-            op = int(input("Selecciones la opción: \n (1) Binario a Decimal \n (2) Hexadecimal a Decimal \n (3) Decimal a Hexadecimal \n (4) Salir \n ->"))
-
+            print("")
+            op = int(input("Seleccione la opción: \n (1) Binario a Decimal \n (2) Hexadecimal a Decimal \n (3) Decimal a Hexadecimal \n (4) Salir \n -> "))
+        print("Gracias por utilizar nuestro sistema. :D")
             
 
 
@@ -119,20 +121,35 @@ class app():
 
     def hexadecimal_Anumero(self,hexadecimal):       
         # Función que regresa el verdadero valor hexadecimal.
-        decimal = int(hexadecimal, base=16)
-        print('Número comvertido a decimal :', decimal)
+
+        decimal = 0
+        posicion = 0
+
+        # Se recorre el número hexadecimal de derecha a izquierda
+        for i in range(len(hexadecimal) - 1, -1, -1):
+            # Se obtiene el valor decimal de cada carácter (letra)
+            if hexadecimal[i].isdigit():
+                v_decimal = int(hexadecimal[i])
+            else:
+                v_decimal = ord(hexadecimal[i]) - ord('A') + 10
+            
+            # Añadimos el valor decimal a la suma total
+            decimal += v_decimal * (16 ** posicion)
+            posicion += 1
+
+        print("El hexadecimal ingresado es el número decimal:", decimal)
 
     # Por ejemplo, si recibe un 15 devuelve f, y si recibe un número menor a 10, devuelve el número sin modificarlo
     def obtener_caracter_hexadecimal(self,valor):
         # Lo necesitamos como cadena
         valor = str(valor)
         equivalencias = {
-            "10": "a",
-            "11": "b",
-            "12": "c",
-            "13": "d",
-            "14": "e",
-            "15": "f",
+            "10": "A",
+            "11": "B",
+            "12": "C",
+            "13": "D",
+            "14": "E",
+            "15": "F",
         }
         if valor in equivalencias:
             return equivalencias[valor]
@@ -141,12 +158,12 @@ class app():
 
 
     def decimal_a_hexadecimal(self,decimal):
-        decimal = 0
+        decimal = decimal
         hexadecimal = ""
         while decimal > 0:
-            residuo = decimal % 16
-            verdadero_caracter = self.obtener_caracter_hexadecimal(residuo)
-            hexadecimal = verdadero_caracter + hexadecimal
+            restante = decimal % 16
+            true_char = self.obtener_caracter_hexadecimal(restante)
+            hexadecimal = true_char + hexadecimal
             decimal = int(decimal / 16)
         return hexadecimal
 
