@@ -4,12 +4,12 @@ class app():
         print("Bienvenido al programa creado por Brandon Reyes Morales y Carlos Valladares.")
         print("El programa realiza conversiones de binario y hexadecimal a números decimales y viceversa.")
         print("Para proceder, por favor ingrese la opción que deseaa realizar:")
-        op = int(input("Seleccione la opción: \n (1) Binario a Decimal \n (2) Hexadecimal a Decimal \n (3) Decimal a Hexadecimal \n (4) Salir \n -> "))
+        op = int(input("Seleccione la opción: \n (1) Decimal a Binario \n (2) Hexadecimal a Decimal \n (3) Decimal a Hexadecimal \n (4) Salir \n -> "))
 
         while(op != 4):   
 
             if(op == 1):
-                n = int(input("Ingrese un decinal de 7 bits rango(0-127): \n -> "))
+                n = int(input("Ingrese un decimal entre -127 a 127: \n -> "))
                 print(n)
                 if(n>=-127 and n<=127):
                     rev = self.Numero_ABinario(n,n)
@@ -41,7 +41,7 @@ class app():
             elif():
                 print("El dato ingresado es inválido.")
             print("")
-            op = int(input("Seleccione la opción: \n (1) Binario a Decimal \n (2) Hexadecimal a Decimal \n (3) Decimal a Hexadecimal \n (4) Salir \n -> "))
+            op = int(input("Seleccione la opción: \n (1) Decimal a Binario \n (2) Hexadecimal a Decimal \n (3) Decimal a Hexadecimal \n (4) Salir \n -> "))
         print("Gracias por utilizar nuestro sistema. :D")
             
 
