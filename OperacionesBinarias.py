@@ -1,26 +1,74 @@
 
 class app():
     def __init__(self):
+        op = int(input("Selecciones la opción: \n (1) Binario a número \n (2) Hexadecimal a número \n (3) Salir \n ->"))
 
-        op = int(input("Selecciones la opción: \n (1) Binario a número \n (2) Hexadecimal a número \n ->"))
-        if(op == 1):
-            n = int(input("Ingrese un decinal de 8 bits "))
-            print(n)
-            if(n>=-127 and n<=127):
-                rev = self.Numero_ABinario(n,n)
-                print("Binario:")
-                print(rev)
-                rev1 = self.Binario_AComplemeto1(rev)
-                print("Complemento A1")
-                print(rev1)
-                rev2 = self.Binario_AComplemeto1()
+        while(op != 3):   
 
-            else:
-                print("No cumpe con 8 bits debe estar el rango de 0 y 127 par ser de 8")
+            if(op == 1):
+                n = int(input("Ingrese un decinal de 7 bits rango(0-127): \n -> "))
+                print(n)
+                if(n>=-127 and n<=127):
+                    rev = self.Numero_ABinario(n,n)
+                    print("------------------------- \n Número ingresado")
+                    print(n)
+                    print("Binario:")
+                    print(rev)
+                    rev1 = self.Binario_AComplemeto1(rev)
+                    print("Complemento A1")
+                    print(rev1)
+                    rev2 = self.Binario_AComplemento2(rev1)
+                    print("Complemento A2")
+                    print(rev2)
+                else:
+                    print("No cumpe con 7 bits debe estar el rango de 0 y 127 par ser de 7 y el singo llega al 8vo bit")
 
-        elif(op == 2):
-            self.hexadecimal_Anumero()
+            elif(op == 2):
+                self.hexadecimal_Anumero()
+            op = int(input("Selecciones la opción: \n (1) Binario a número \n (2) Hexadecimal a número \n (3) Salir \n ->"))
 
+
+    def Binario_AComplemento2(self,listaBinariaA1):
+        l = listaBinariaA1
+        acu = 1
+        for valor in range(len(l)-1,0,-1):
+            i = l[valor]
+            if(acu == 0):
+                if(i == 0):
+                    i = i + acu
+                    l[valor] = i
+                    pass
+                if(i == 1):
+                    i = i + acu
+                    l[valor] = i
+                if(i == 2):
+                    i = acu
+                    acu = 1
+                    l[valor] = i
+                    pass
+            if(acu == 1):
+                if(i == 0):
+                    i = i + acu
+                    acu = 0
+                    l[valor] = i
+                    pass
+                if(i == 1):
+                    i = + i + acu
+                    acu = 0
+                    l[valor] = i
+                    pass
+                if(i == 2):
+                    i = 0 
+                    acu = 1
+                    l[valor] = i
+                    pass
+
+        return l
+
+
+
+
+        
 
     def Binario_AComplemeto1(self,listaBinaria):
         listaBinaria = listaBinaria
